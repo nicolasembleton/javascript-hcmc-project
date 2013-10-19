@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <script src="../Misc/d3.v3.min.js" type="text/javascript">
+</script>
+  <script src="../Misc/jquery-1.9.1.js" type="text/javascript">
+</script>
+  <script src="../Misc/common.js" type="text/javascript">
+</script>
+  <script src="../Misc/linked.js" type="text/javascript">
+</script>
+  <link href="../Styles/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="../Styles/style.css" rel="stylesheet" type="text/css" />
+
+  <title></title>
+</head>
+
+<body>
+  <script src="../Misc/bootstrap.min.js" type="text/javascript">
+</script>
+
+  <p><br /></p>
+
+  <div class="row">
+    <div class="row">
+      <p class="span1" style="margin-left:22px;">Value</p>
+
+      <div class="textinput span2" contenteditable="true" id="inputValue" maxlength="2" name="node"></div><input class="btn span2" onclick="insertFirst()" type="button" value="Insert First" /> <input class="btn span2" onclick="insertLast()" type="button" value="Insert Last" />
+    </div>
+  </div>
+
+  <div class="row">
+    <p class="span1">Position</p>
+
+    <div class="textinput span1" contenteditable="true" id="inputPos" name="Position" style="width:70px;"></div><input class="btn span2" onclick="insertPosition()" style="width:135px;" type="button" value="Insert Position" /> <input class="btn span2" onclick="delLast()" type="button" value="Delete" /> <input class="btn span1" onclick="clearList()" style="width:60px;" type="button" value="Clear" /><br />
+    <br />
+  </div>
+
+  <div class="row-fluid" id="list" style="padding-left:20px;"></div><script type="text/javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //<![CDATA[
+
+                
+                limitInput("inputValue",4);
+                limitInput("inputPos",2);
+        
+        
+                        var dataset = [];
+                        
+                        var lst = new LinkedList();
+                        // w, h, height, padding_x, padding_y,item, size_node, color_node, color_tail,color_tail_list,color_text,color_border;
+                        lst.init(900,400,100,0,170,5, 40);
+                        lst.initColor("#f8f2f4","#22b14c","#21c2df","black","#b97a57","#f04343","black");
+                        
+                        $(document).ready(function(){
+                          lst.drawList("head");
+                          var scale = d3.scale.linear()
+                                                        .domain([100, 500])
+                                                        .range([10, 350]);
+                        });                     
+                        
+                        function insertFirst()
+                        {
+                                var value = $("div[name=node]").text();
+                                if(value == ""){
+                                        alert("Please input valid node value");
+                                }
+                                else{
+                                        lst.insertFirst(value,"head");
+                                        setTimeout(function() {         
+                                                        lst.ReDraw("head");                                     
+                                        }, 3000); 
+                                }
+                                
+                        }
+                        function clearList()
+                        {
+                                dataset.splice(0, dataset.length);                      
+                                lst.ReDraw("head");                     
+                        }
+                        function insertLast()
+                        {
+                                var value = $("div[name=node]").text();
+                                if(value == ""){
+                                        alert("Please input valid node value");
+                                }
+                                else{   
+                                        lst.insertLast(value,"head");
+                                        setTimeout(function() {         
+                                                        lst.ReDraw("head");                                     
+                                        }, 2500); 
+                                }
+                        }
+                        
+                        function insertPosition()
+                        {
+                                var value = $("div[name=node]").text();
+                                var p = $("div[name=Position]").text();
+                                if(value == ""){
+                                        alert("Please input valid node value");
+                                }
+                                else{
+                                        if($.isNumeric(p) && p != "" && parseInt(p) > 0)
+                                        {
+                                                lst.insertPosition(value,p,"head");
+                                        }
+                                        else{
+                                                alert("Please input valid position");
+                                        }                                       
+                                }
+                        }
+                        function delLast()
+                        {
+                                var p = $("div[name=Position]").text();
+                                var pos = parseInt(p);                          
+                                lst.del(pos,"head");
+                                setTimeout(function() {         
+                                        //lst.ReDraw("head");                                   
+                                }, 3500);                               
+                        }
+                
+  //]]>
+  </script>
+</body>
+</html>

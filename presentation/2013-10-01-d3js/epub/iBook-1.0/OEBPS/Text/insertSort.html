@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <script src="../Misc/d3.v3.min.js" type="text/javascript">
+</script>
+  <script src="../Misc/jquery-1.9.1.js" type="text/javascript">
+</script>
+  <script src="../Misc/common.js" type="text/javascript">
+</script>
+  <script src="../Misc/insertSort.js" type="text/javascript">
+</script>
+  <link href="../Styles/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="../Styles/style.css" rel="stylesheet" type="text/css" />
+  <script src="../Misc/bootstrap.min.js" type="text/javascript">
+</script>
+
+  <title></title>
+</head>
+
+<body>
+  <div class="row-fluid">
+    <br />
+    <label style="margin-left:5px;">Value for sort</label>
+
+    <p class="textinput span2" contenteditable="true" name="value"></p><input class="btn span2" id="insert" onclick="insert()" type="button" value="Add Value" /> <input class="btn span2" id="run" onclick="sort()" style="display: inline-block;" type="button" value="Insert Sort" /> <input class="btn span2" id="reset" onclick="ClearRecur()" type="button" value="Reset" />
+  </div>
+
+  <p><br /></p>
+
+  <div class="row-fluid">
+    <div class="span7" style="font-size:14px;">
+      <span id="code0" style="color: black;">Algorithm InsertionSort ()</span><br />
+      <span id="code1" style="color: black;">1. if (count &gt; 1)</span><br />
+      <span id="code2" style="color: black;">&nbsp;&nbsp;&nbsp;1. current = 1</span><br />
+      <span id="code3" style="color: black;">&nbsp;&nbsp;&nbsp;2. loop (current &lt; count )</span><br />
+      <span id="code4" style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. temp = data[current]</span><br />
+      <span id="code5" style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. walker = current - 1</span><br />
+      <span id="code6" style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. loop (walker &gt;=0) AND</span><br />
+      <span id="code7" style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (temp.key &lt; data[walker].key)</span><br />
+      <span id="code8" style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. data[walker+1] = data[walker]</span><br />
+      <span id="code9" style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. walker = walker -1</span><br />
+      <span id="code10" style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. data[walker+1]= temp</span><br />
+      <span id="code11" style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. current = current + 1<span style="color: black;"><br />
+      <span id="code12" style="color: black;">End InsertionSort</span></span></span>
+    </div>
+
+    <div class="span3">
+      <table class="table">
+        <tr class="success count alert alert-error">
+          <td>count</td>
+
+          <td id="count">0</td>
+        </tr>
+
+        <tr class="error current alert alert-info">
+          <td>current</td>
+
+          <td id="current">0</td>
+        </tr>
+
+        <tr class="info walker alert alert-warning">
+          <td>walker</td>
+
+          <td id="walker">0</td>
+        </tr>
+
+        <tr class="warning temp alert alert-success">
+          <td>temp</td>
+
+          <td id="temp">null</td>
+        </tr><!--    
+                <tr class="error">
+                        <td >data[walker]</td>
+                        <td id="key_walker">null</td>
+                </tr>
+                
+                <tr class="success">
+                        <td >data[walker+1]</td>
+                        <td id="key_walker2">null</td>
+                </tr>
+        -->
+      </table>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span12" id="insert"></div>
+  </div><script type="text/javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //<![CDATA[
+
+        var dataset = [];
+        
+        var insertSort = new InsertSort();
+        // svg_width, svg_height, stack_width, stack_height, left, padding_top
+        insertSort.init(600,320,40 ,0);
+        
+        var count = 0;
+        var step = 0;
+        var current = 1;
+        $(document).ready(function(){
+          insertSort.Draw(); 
+         // tower.Run();
+         
+        });     
+        
+        function insert()
+        {
+                count++;
+                if(count<=7)
+                {
+                        var value = $('p[name=value]').text();
+                        insertSort.InputValue(value,count);
+                        dataset.splice(count - 1, 0, value);
+                        $('td#count').text(count);
+                        $('tr.count').addClass("note");
+                        
+                }
+                
+        }
+        
+        function sort()
+        {
+                insertSort.Sort();
+        }
+        
+        
+        function ClearRecur()
+        {
+                $('input#run').show();
+                $('span').css("color","black");
+                $('tr').removeClass("note");
+                $('td#count').text(0);
+                $('td#current').text(0);
+                $('td#temp').text("null");
+                $('td#walker').text(0);
+                dataset.splice(0, dataset.length);
+                d3.selectAll("svg#insert").remove(); 
+                insertSort.init(600,320,10 ,0);
+                insertSort.Draw(); 
+                count = 0;
+                step = 0;
+                current = 0;
+        }
+                
+        
+  //]]>
+  </script>
+</body>
+</html>

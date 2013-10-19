@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <script src="../Misc/d3.v3.min.js" type="text/javascript">
+</script>
+  <script src="../Misc/jquery-1.9.1.js" type="text/javascript">
+</script>
+  <script src="../Misc/common2.js" type="text/javascript">
+</script>
+  <script src="../Misc/HN.js" type="text/javascript">
+</script>
+  <link href="../Styles/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="../Styles/style.css" rel="stylesheet" type="text/css" />
+  <script src="../Misc/bootstrap.min.js" type="text/javascript">
+</script>
+
+  <title></title>
+</head>
+
+<body>
+  <div class="row-fluid" style="padding-left:20px;">
+    <input class="btn span2" id="stepbutton" onclick="RunNext()" type="button" value="Run Step" /> <input class="btn span2" id="run" onclick="Run()" type="button" value="Run All" /> <input class="btn span2" id="reset" onclick="ClearRecur()" type="button" value="Reset" />
+  </div>
+
+  <div class="row-fluid" style="padding-left:15px;font-size:15px;margin-bottom:2px">
+    <p class="text text1">Algorithm Move(val n,val source, val destination,val auxiliary)</p>
+
+    <p class="text text2">if (n &gt; 0)</p>
+
+    <p class="text text3">&nbsp; 1. Move (n -1, source, auxiliary , destination)</p>
+
+    <p class="text text4">&nbsp; 2. move a disk from source to destination</p>
+
+    <p class="text text5">&nbsp; 3. Move (n -1, auxiliary , destination, source)</p>
+
+    <p class="text text6">End Move</p>
+  </div>
+
+  <div class="row-fluid" id="tower"></div><script type="text/javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //<![CDATA[
+
+        var dataset = [];
+        var step = 0;
+                                
+        var tower = new Tower();
+        // svg_width, svg_height, stack_width, stack_height, left, padding_top
+        tower.init(600,520,100 ,120,10 ,0);
+        
+        
+        $(document).ready(function(){
+          tower.Draw(); 
+         // tower.Run();
+         
+        });     
+        
+        function Run()
+        {
+        ClearRecur();
+                $("input#stepbutton").attr("disabled","disabled");
+                $("input#run").attr("disabled","disabled");
+                $("input#reset").attr("disabled","disabled");
+                tower.Run();
+        }
+        
+        function RunNext()
+        {
+                tower.RunNext();
+        }
+        
+        function ClearRecur()
+        {
+                d3.selectAll("svg#tower").remove(); 
+                tower.init(600,520,100 ,120,10 ,0);
+                tower.Draw(); 
+                $('p.text').css("color","black");
+                $("input#run").removeAttr("disabled");
+        }
+                
+        
+  //]]>
+  </script>
+</body>
+</html>

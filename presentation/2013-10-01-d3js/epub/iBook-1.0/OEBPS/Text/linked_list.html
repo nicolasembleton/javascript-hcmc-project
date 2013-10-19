@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+  <title>Multichoice</title>
+  <link href="../Styles/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+  <link href="../Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="../Styles/custom_multi.css" rel="stylesheet" type="text/css" />
+  <script src="../Misc/jquery-1.9.1.js" type="text/javascript">
+</script>
+  <script src="../Misc/jquery-shuffle.js" type="text/javascript">
+</script>
+  <script src="../Misc/multichoice.js" type="text/javascript">
+</script>
+  <script type="text/javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //<![CDATA[
+
+        $(document).ready(function() {
+
+            iniMulti();
+        
+        });
+
+  //]]>
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h3>Linked List</h3><br />
+
+    <div class="row question" object="ques_1">
+      <div class=" alert alert-info">
+        <span>1.</span> Which of the following data structures are indexed structures?
+      </div>
+
+      <ol class="answer" style="list-style-type: upper-alpha;">
+        <li class=" ques_1" onclick="choiceAns($(this),'ques_1',false,true)"><input type="hidden" value="1" />Linear arrays</li>
+
+        <li class=" ques_1" onclick="choiceAns($(this),'ques_1',false,true)">Linked lists</li>
+      </ol>
+
+      <ul class="ans2">
+        <li class=" ques_1two" onclick="choiceAns($(this),'ques_1',false,true)">C. Both of above</li>
+
+        <li class=" ques_1two" onclick="choiceAns($(this),'ques_1',false,true)">D. None of above</li>
+      </ul>
+    </div><br />
+
+    <div class="row question" object="ques_2">
+      <div class=" alert alert-info">
+        <span>2.</span> Linked lists are best suited _____________
+      </div>
+
+      <ol class="answer" style="list-style-type: upper-alpha;">
+        <li class=" ques_2" onclick="choiceAns($(this),'ques_2',false,true)">for relatively permanent collections of data</li>
+
+        <li class=" ques_2" onclick="choiceAns($(this),'ques_2',false,true)"><input type="hidden" value="1" />for the size of the structure and the data in the structure are constantly changing</li>
+      </ol>
+
+      <ul class="ans2">
+        <li class=" ques_2two" onclick="choiceAns($(this),'ques_2',false,true)">C. for both of above situation.</li>
+
+        <li class=" ques_2two" onclick="choiceAns($(this),'ques_2',false,true)">D. for none of above situation</li>
+      </ul>
+    </div><br />
+
+    <div class="row question" object="ques_3">
+      <div class=" alert alert-info">
+        <span>3.</span> Which of the following data structure store the homogeneous data elements?
+      </div>
+
+      <ol class="answer" style="list-style-type: upper-alpha;">
+        <li class=" ques_3" onclick="choiceAns($(this),'ques_3')">Arrays.</li>
+
+        <li class=" ques_3" onclick="choiceAns($(this),'ques_3')"><input type="hidden" value="1" />Records.</li>
+
+        <li class=" ques_3" onclick="choiceAns($(this),'ques_3')">Pointers.</li>
+
+        <li class=" ques_3" onclick="choiceAns($(this),'ques_3')">Lists.</li>
+      </ol>
+    </div><br />
+
+    <div class="row question" object="ques_4">
+      <div class=" alert alert-info">
+        <span>4.</span> The situation when in a linked list START=NULL is __________.
+      </div>
+
+      <ol class="answer" style="list-style-type: upper-alpha;">
+        <li class=" ques_4" onclick="choiceAns($(this),'ques_4')"><input type="hidden" value="1" />underflow.</li>
+
+        <li class=" ques_4" onclick="choiceAns($(this),'ques_4')">overflow.</li>
+
+        <li class=" ques_4" onclick="choiceAns($(this),'ques_4')">houseful.</li>
+
+        <li class=" ques_4" onclick="choiceAns($(this),'ques_4')">saturated.</li>
+      </ol>
+    </div><br />
+
+    <div class="row question" object="ques_5">
+      <div class=" alert alert-info">
+        <span>5.</span> Which of the following is two way list?
+      </div>
+
+      <ol class="answer" style="list-style-type: upper-alpha;">
+        <li class=" ques_5" onclick="choiceAns($(this),'ques_5')"><input type="hidden" value="1" />Circular header list.</li>
+
+        <li class=" ques_5" onclick="choiceAns($(this),'ques_5')">Grounded header list.</li>
+
+        <li class=" ques_5" onclick="choiceAns($(this),'ques_5')">Linked list with header and trailer nodes.</li>
+
+        <li class=" ques_5" onclick="choiceAns($(this),'ques_5')">Doubly linked list.</li>
+      </ol>
+    </div><br />
+
+    <div class="row question" object="ques_6">
+      <div class=" alert alert-info">
+        <span>6.</span> Each node in a linked list has at least _________ parts.
+      </div>
+
+      <ol class="answer" style="list-style-type: upper-alpha;">
+        <li class=" ques_6" onclick="choiceAns($(this),'ques_6')"><input type="hidden" value="1" />2.</li>
+
+        <li class=" ques_6" onclick="choiceAns($(this),'ques_6')">1.</li>
+
+        <li class=" ques_6" onclick="choiceAns($(this),'ques_6')">3.</li>
+
+        <li class=" ques_6" onclick="choiceAns($(this),'ques_6')">4.</li>
+      </ol>
+    </div><br />
+
+    <div class="row question" object="ques_7">
+      <div class=" alert alert-info">
+        <span>7.</span> In a linked list, insertion can be done at __________________.
+      </div>
+
+      <ol class="answer" style="list-style-type: upper-alpha;">
+        <li class=" ques_7" onclick="choiceAns($(this),'ques_7',false,true)">Beginning.</li>
+
+        <li class=" ques_7" onclick="choiceAns($(this),'ques_7',false,true)">End.</li>
+
+        <li class=" ques_7" onclick="choiceAns($(this),'ques_7',false,true)">Middle.</li>
+      </ol>
+
+      <ul class="ans2">
+        <li class=" ques_7two" onclick="choiceAns($(this),'ques_7',false,true)"><input type="hidden" value="1" />D. All the above.</li>
+      </ul>
+    </div><br />
+
+    <div class="row">
+      <button class="btn btn-info span2 checkAns" onclick="checkAns()" style="margin-left:25px;">Check Answer</button> <button class="btn btn-info span2" onclick="reset()">Reset</button>
+    </div>
+  </div>
+</body>
+</html>

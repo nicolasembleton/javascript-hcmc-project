@@ -1,0 +1,28 @@
+body
+{
+    font-size: .85em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+.availble {
+    border: 1px dashed red;
+}
+
+.selected {
+    opacity: 0.7;
+}
+
+.result {
+    margin-top: 10px;
+}
+
+    .result .row {
+        margin-top: 5px;
+    }
+
+.s-line {
+    height: auto;
+    border-left: 1px solid red;
+}

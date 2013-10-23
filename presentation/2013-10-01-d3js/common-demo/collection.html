@@ -1,0 +1,184 @@
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<style>
+			.container {
+				
+			}
+		</style>
+		
+		<script>
+			var data = [5, 7];
+		
+			function printData() {
+				$("#msg").text("Data is now: " + JSON.stringify(data) );
+			}
+		
+			function demo1() {
+				printData();
+				
+				if( $("#transition").is(':checked') )
+					d3.select("#container")
+						.transition().duration(2000)
+						.style("background-color", "green");
+						
+				else
+					d3.select("#container")
+						.style("background-color", "green");
+			}
+			
+			function demo2() {
+				printData();
+				
+				if( $("#transition").is(':checked') )
+					d3.select("#container")
+						.selectAll("p")
+						.transition().duration(2000)
+						.style("color", function(d,i) {
+							if( i%2 == 0 )
+								return "red";
+							else 
+								return "white";
+						});
+				else
+					d3.select("#container")
+						.selectAll("p")
+						.style("color", function(d,i) {
+							if( i%2 == 0 )
+								return "red";
+							else 
+								return "white";
+						});
+			}
+			
+			function demo3() {
+				printData();
+				
+				if( $("#transition").is(':checked') )
+					d3.select("#container")
+						.selectAll("p")
+						.transition().duration(1000)
+						.style("font-size", function(d,i) {
+							return 10 + i * 2;
+						});
+				else
+					d3.select("#container")
+						.selectAll("p")
+						.style("font-size", function(d,i) {
+							return 10 + i * 2;
+						});
+			}
+			
+			function demo4() {
+				printData();
+				
+				data.push(7);
+				data.push(15);
+				
+				
+				if( $("#transition").is(':checked') )
+				{
+					var p = d3.select("#container")
+						.selectAll("p")
+						.data( data )
+						.text(function(d,i) {
+							return "#" + i + ": value=" + d;
+						});
+						
+					p.transition().duration(1000)
+						.style("font-size", function(d,i) {
+							return 10 + d * 2;
+						});
+						
+					p.enter()
+						.append("div")
+						.attr("class", "btn btn-primary")
+						.style("width", "50px")
+						.style("height", "50px")
+						.style("color", "yellow");
+				}
+				else
+				{
+					var p = d3.select("#container")
+						.selectAll("p")
+						.data( data )
+						.text(function(d,i) {
+							return "#" + i + ": value=" + d;
+						})
+						.style("font-size", function(d,i) {
+							return 10 + d * 2;
+						});
+						
+					p.enter().append("div")
+						.attr("class", "btn btn-primary")
+						.style("width", "50px")
+						.style("height", "50px")
+						.style("color", "yellow");
+				}
+			}
+			
+			
+			function demo5() {
+				
+				data.push(Math.round(Math.random()*20));
+				
+				printData();
+				
+				demo4();
+			}
+			
+			
+			function demo6() {
+				printData();
+				
+				d3.select("#container").selectAll("p")
+					.data([39, 12])
+					.enter().append("p")
+					.text(function(d, i) { return "New value entered: " + d + "!"; });
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div>
+			<div class="row">
+				<div class="col-xs-2">
+					<div class="panel panel-primary ">
+						<div class="panel-heading">Controls</div>
+						<div class="panel-body">
+							<input type="checkbox" id="transition"> Transition </input>
+							<div class="btn  btn-default btn-block" onclick="demo1();">Change background</div>
+							<div class="btn  btn-default btn-block" onclick="demo2();">Change text color</div>
+							<div class="btn  btn-default btn-block" onclick="demo3();">Dynamic font-size</div>
+							<div class="btn  btn-default btn-block" onclick="demo4();">Bind data with text</div>
+							<div class="btn  btn-default btn-block" onclick="demo5();">Append new data</div>
+							<div class="btn  btn-default btn-block" onclick="demo6();">Enter new data</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-xs-8">
+					<div class="panel panel-primary ">
+						<div class="panel-heading">Content</div>
+						<div class="panel-body">
+							<div id="msg" class="well">
+							
+							</div>
+							<div id="container">
+								<p>Default</p>
+								
+								<p>Default</p>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
